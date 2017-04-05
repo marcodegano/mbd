@@ -1,9 +1,64 @@
 <!DOCTYPE html>
 
 <html>
-  
-  <body>
+  <head>
     
+    <script>
+      
+      function startFunction(){
+        
+        var canWidth = window.innerWidth - 25;
+        var canHeight = window.innerHeight - 25;
+        
+        //canWidth = 25;
+        //canHeight = 25;
+        
+        var can = document.getElementById("monCanvas");
+        var ctx = can.getContext("2d");
+        
+        can.left = 25;
+        can.top = 25;
+        can.width = canWidth;
+        can.height = canHeight;      
+        
+        ctx.save();
+        
+        var id = setInterval(bounce, 500);
+      
+      function bounce() {
+        
+        var can = document.getElementById("monCanvas");
+        var ctx = can.getContext("2d");
+        
+        var rndTop = Math.floor((Math.random() * (canHeight - 21)) + 1);
+        var rndLeft = Math.floor((Math.random() * (canWidth - 21)) + 1);
+        
+        erase();
+        
+        ctx.beginPath();
+        ctx.arc(rndLeft + 10, rndTop + 10, 10, 0, 2*Math.PI);
+        ctx.fillStyle = "blue";
+        ctx.fill();
+        ctx.stroke();
+      }
+      
+      }
+      
+      function erase() {
+        var can = document.getElementById("monCanvas");
+        var ctx = can.getContext("2d");
+        
+        ctx.clearRect(0, 0, can.width += 0, can.height += 0);
+      }
+      
+    </script>
+    
+  </head>
+  
+  <body onload="startFunction()">
+    
+    <canvas id="monCanvas" width="1" height="1" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.</canvas>
     
   </body>
   
