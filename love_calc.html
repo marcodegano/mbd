@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>The Real Love Calculator</h1>
+
+<table id="table1">
+
+<tr>
+<td>
+Premier nom:
+</td>
+<td>
+<input type="text" id="idNom1"></input>
+</td>
+</tr>
+
+<tr>
+<td>
+Second nom:
+</td>
+<td>
+<input type="text" id="idNom2"></input>
+</td>
+</tr>
+
+<tr>
+<td>
+<input type="button" id="btnLove" value="Calculer l'amour <3" onClick="fnc()"> </input>
+</td>
+
+<td>
+<input type="button" id="btnReset" value="Effecer les noms" onClick="fnc2()"> </input>
+</td>
+</tr>
+</table>
+
+<script>
+
+function fnc(){
+
+var Nom1 = document.getElementById("idNom1");
+var Nom2 = document.getElementById("idNom2");
+
+if ((Nom1.value != "" && Nom1.value != null ) && (Nom2.value != "" && Nom2.value != null)){
+
+var rnd = Math.floor((Math.random() * 100) + 1);
+
+alert("il y a " + rnd + "% d'amour entre " + Nom1.value + " et " + Nom2.value + ".");
+}
+else if(Nom1.value == "" || Nom1.value == null){
+alert("Vous devez entrer le premier nom.");
+}
+else if(Nom2.value == "" || Nom2.value == null){
+alert("Vous devez entrer le deuxième nom.");
+}
+
+
+}
+
+function fnc2(){
+var Nom1 = document.getElementById("idNom1");
+var Nom2 = document.getElementById("idNom2");
+
+Nom1.value = "";
+Nom2.value = "";
+}
+
+</script>
+
+</body>
+</html>
