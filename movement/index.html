@@ -51,11 +51,9 @@
       
       function collisions(speed, limit, currentPos, ray) {
         if ((currentPos + speed) > limit - (2 * ray)) {
-          alert();
           speed = newDirection(speed);
         }
         else if ((currentPos + speed) < 0) {
-          alert();
           speed = newDirection(speed);
         }
         
