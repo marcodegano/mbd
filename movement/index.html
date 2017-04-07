@@ -7,8 +7,9 @@
       
       function startFunction(){
         
-        var canWidth = window.innerWidth - 25;
-        var canHeight = window.innerHeight - 25;        
+        var canWidth = Math.floor((window.innerWidth - 25) / 100) * 100;
+        var canHeight = Math.floor((window.innerHeight - 25) / 100) * 100;
+
         var can = document.getElementById("monCanvas");
         var ctx = can.getContext("2d");
         
@@ -21,8 +22,9 @@
         
         var xSpeed = setSpeed();
         var ySpeed = setSpeed();
+        var ray = 10;
         
-        var positions = setPosition(canHeight, canWidth);
+        var positions = setPosition(canHeight, canWidth, ray);
         var topVal = positions[0];
         var leftVal = positions[1];
         
@@ -30,8 +32,8 @@
       
       function move() {
                        
-        ySpeed = collisions(ySpeed, canHeight, topVal);
-        xSpeed = collisions(xSpeed, canWidth, leftVal);
+        ySpeed = collisions(ySpeed, canHeight, topVal, ray);
+        xSpeed = collisions(xSpeed, canWidth, leftVal, ray);
         
         topVal = topVal + ySpeed;
         leftVal = leftVal + xSpeed;
@@ -39,7 +41,7 @@
         erase();
         
         ctx.beginPath();
-        ctx.arc(leftVal + 10, topVal + 10, 10, 0, 2*Math.PI);
+        ctx.arc(leftVal + ray, topVal + ray, ray, 0, 2*Math.PI);
         ctx.fillStyle = "blue";
         ctx.fill();
         ctx.stroke();
@@ -47,29 +49,31 @@
       
       }
       
-      function collisions(speed, limit, currentPos) {
-        if ((currentPos + speed) > limit - 10) {
+      function collisions(speed, limit, currentPos, ray) {
+        if ((currentPos + speed) > limit - (2 * ray)) {
+          alert();
           speed = newDirection(speed);
         }
-        else if ((currentPos + speed) < 10) {
+        else if ((currentPos + speed) < 0) {
+          alert();
           speed = newDirection(speed);
         }
         
         return speed;
       }
       
-      function setPosition(canHeight, canWidth) {
+      function setPosition(canHeight, canWidth, ray) {
         
         var can = document.getElementById("monCanvas");
         var ctx = can.getContext("2d");
         
-        var rndTop = Math.floor((Math.random() * (canHeight - 21)) + 1);
-        var rndLeft = Math.floor((Math.random() * (canWidth - 21)) + 1);
-        
+        var rndTop = Math.floor((Math.random() * (canHeight - (ray * 2 + 1))) + 1);
+        var rndLeft = Math.floor((Math.random() * (canWidth - (ray * 2 + 1))) + 1);
+
         erase();
         
         ctx.beginPath();
-        ctx.arc(rndLeft + 10, rndTop + 10, 10, 0, 2*Math.PI);
+        ctx.arc(rndLeft + ray, rndTop + ray, ray, 0, 2*Math.PI);
         ctx.fillStyle = "blue";
         ctx.fill();
         ctx.stroke();
@@ -87,7 +91,7 @@
       function setSpeed() {
         
         var speed = Math.floor((Math.random() * 5) + 1);
-        
+
         return speed;
       }
 
