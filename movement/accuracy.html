@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html>
+  
+<head>
+ 
+  <script>
+  
+    var topVal = 0;
+    var leftVal = 0;
+    var ray = 0;
+    var canWidth = 0;
+    var canHeight = 0;
+    
+    function start() {
+      
+      canWidth = Math.floor((window.innerWidth - 25) / 100) * 100;
+      canHeight = Math.floor((window.innerHeight - 25) / 100) * 100;
+      
+      var can = document.getElementById("monCanvas");
+      var ctx = can.getContext("2d");
+      
+      can.top = 25;
+      can.left = 25;
+      can.height = canHeight;
+      can.width = canWidth;
+      
+      ctx.save();
+      
+      ray = 15;
+      
+      setPosition();
+      //var positions = setPosition(canHeight, canWidth, ray);
+      //topVal = positions[0];
+      //leftVal = positions[1];
+      
+      can.addEventListener("touchstart", touch, false);
+      can.addEventListener("click", click, false);
+    }
+    
+    function touch() {
+      //alert("x: " + event.touches[0].pageX + " y: " + event.touches[0].pageY)
+      alert();
+      var clickX = event.touches[0].pageX;
+      var clickY = event.touches[0].pageY;
+      
+      if (Math.sqrt(Math.pow(clickX - (ray + leftVal), 2) + Math.pow(clickY - (ray + topVal), 2)) <= ray){
+        setPosition();
+      }
+      else
+      {
+        alert("out");
+      }
+      
+    }
+    
+     function click() {
+
+      var clickX = event.clientX;
+      var clickY = event.clientY;
+       
+      if (Math.sqrt(Math.pow(clickX - (ray + leftVal), 2) + Math.pow(clickY - (ray + topVal), 2)) <= ray){
+        setPosition();
+      }
+      else
+      {
+        alert("out");
+      }
+      
+    }
+    
+    function setPosition() {
+        
+        var can = document.getElementById("monCanvas");
+        var ctx = can.getContext("2d");
+        
+        var rndTop = Math.floor((Math.random() * (canHeight - (ray * 2 + 1))) + 1);
+        var rndLeft = Math.floor((Math.random() * (canWidth - (ray * 2 + 1))) + 1);
+
+        erase();
+        
+        ctx.beginPath();
+        ctx.arc(rndLeft + ray, rndTop + ray, ray, 0, 2*Math.PI);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+        
+      topVal = rndTop;
+      leftVal = rndLeft;
+        //return [rndTop, rndLeft];
+      }
+      
+      function erase() {
+        var can = document.getElementById("monCanvas");
+        var ctx = can.getContext("2d");
+        
+        ctx.clearRect(0, 0, can.width += 0, can.height += 0);
+      }
+   
+  
+  </script>
+</head>
+
+<body onload="start()">
+  <canvas id="monCanvas" width="1" height="1" style="border: 1px solid #d3d3d3;">
+  Your browser does not support the HTML5 canvas tag</canvas>
+</body>
+  
+</html>

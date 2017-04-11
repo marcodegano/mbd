@@ -42,8 +42,9 @@
         
         ctx.beginPath();
         ctx.arc(leftVal + ray, topVal + ray, ray, 0, 2*Math.PI);
-        ctx.fillStyle = "blue";
+        ctx.fillStyle = "red";
         ctx.fill();
+        ctx.strokeStyle = "red";
         ctx.stroke();
       }
       
@@ -72,8 +73,9 @@
         
         ctx.beginPath();
         ctx.arc(rndLeft + ray, rndTop + ray, ray, 0, 2*Math.PI);
-        ctx.fillStyle = "blue";
+        ctx.fillStyle = "red";
         ctx.fill();
+        ctx.strokeStyle = "red";
         ctx.stroke();
         
         return [rndTop, rndLeft];
