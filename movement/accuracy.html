@@ -30,26 +30,21 @@
       ray = 15;
       
       setPosition();
-      //var positions = setPosition(canHeight, canWidth, ray);
-      //topVal = positions[0];
-      //leftVal = positions[1];
       
       can.addEventListener("touchstart", touch, false);
       can.addEventListener("click", click, false);
     }
     
     function touch() {
-      //alert("x: " + event.touches[0].pageX + " y: " + event.touches[0].pageY)
-      alert();
       var clickX = event.touches[0].pageX;
       var clickY = event.touches[0].pageY;
       
-      if (Math.sqrt(Math.pow(clickX - (ray + leftVal), 2) + Math.pow(clickY - (ray + topVal), 2)) <= ray){
+      if (Math.sqrt(Math.pow(clickX - (ray + leftVal), 2) + Math.pow(clickY - (ray + topVal), 2)) <= ray || Math.sqrt(Math.pow(clickX - (2*ray + leftVal), 2) + Math.pow(clickY - (2*ray + topVal), 2)) <= ray){
         setPosition();
       }
       else
       {
-        alert("out");
+        
       }
       
     }
@@ -58,13 +53,13 @@
 
       var clickX = event.clientX;
       var clickY = event.clientY;
-       
-      if (Math.sqrt(Math.pow(clickX - (ray + leftVal), 2) + Math.pow(clickY - (ray + topVal), 2)) <= ray){
+
+      if (Math.sqrt(Math.pow(clickX - (ray + leftVal), 2) + Math.pow(clickY - (ray + topVal), 2)) <= ray || Math.sqrt(Math.pow(clickX - (2*ray + leftVal), 2) + Math.pow(clickY - (2*ray + topVal), 2)) <= ray){
         setPosition();
       }
       else
       {
-        alert("out");
+        
       }
       
     }
@@ -81,9 +76,9 @@
         
         ctx.beginPath();
         ctx.arc(rndLeft + ray, rndTop + ray, ray, 0, 2*Math.PI);
-        ctx.fillStyle = "red";
+        ctx.fillStyle = "rgb(255,0,0)";
         ctx.fill();
-        ctx.strokeStyle = "red";
+        ctx.strokeStyle = "rgb(255,0,0)";
         ctx.stroke();
         
       topVal = rndTop;

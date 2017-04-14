@@ -5,6 +5,10 @@
     
     <script>
       
+      var r = 0;
+      var g = 0;
+      var b = 0;
+      
       function startFunction(){
         
         var canWidth = Math.floor((window.innerWidth - 25) / 100) * 100;
@@ -24,6 +28,11 @@
         var ySpeed = setSpeed();
         var ray = 10;
         
+        changeColor();
+        
+        can.addEventListener("click", changeColor, false);
+        can.addEventListener("touchStart", changeColor, false);
+        
         var positions = setPosition(canHeight, canWidth, ray);
         var topVal = positions[0];
         var leftVal = positions[1];
@@ -42,9 +51,9 @@
         
         ctx.beginPath();
         ctx.arc(leftVal + ray, topVal + ray, ray, 0, 2*Math.PI);
-        ctx.fillStyle = "red";
+        ctx.fillStyle = "rgb(" + r + ", " + g + ", " + b + ")";
         ctx.fill();
-        ctx.strokeStyle = "red";
+        ctx.strokeStyle = "rgb(" + r + ", " + g + ", " + b + ")";
         ctx.stroke();
       }
       
@@ -53,9 +62,11 @@
       function collisions(speed, limit, currentPos, ray) {
         if ((currentPos + speed) > limit - (2 * ray)) {
           speed = newDirection(speed);
+          changeColor();
         }
         else if ((currentPos + speed) < 0) {
           speed = newDirection(speed);
+          changeColor();
         }
         
         return speed;
@@ -73,9 +84,9 @@
         
         ctx.beginPath();
         ctx.arc(rndLeft + ray, rndTop + ray, ray, 0, 2*Math.PI);
-        ctx.fillStyle = "red";
+        ctx.fillStyle = "rgb(" + r + ", " + g + ", " + b + ")";
         ctx.fill();
-        ctx.strokeStyle = "red";
+        ctx.strokeStyle = "rgb(" + r + ", " + g + ", " + b +")";
         ctx.stroke();
         
         return [rndTop, rndLeft];
@@ -105,6 +116,19 @@
         }
         
         return newSpeed;
+      }
+      
+      function randomColor() {
+        
+        rgb = Math.floor((Math.random() * 255) + 1);
+        
+        return rgb;
+      }
+      
+      function changeColor() {
+        r = randomColor();
+        g = randomColor();
+        b = randomColor();
       }
             
     </script>
