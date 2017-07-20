@@ -4,6 +4,7 @@
   
 <head>
  
+  <script src="../libraries/libMarco.js"></script>
   <script>
   
     var topVal = 0;
@@ -69,10 +70,10 @@
         var can = document.getElementById("monCanvas");
         var ctx = can.getContext("2d");
         
-        var rndTop = Math.floor((Math.random() * (canHeight - (ray * 2 + 1))) + 1);
-        var rndLeft = Math.floor((Math.random() * (canWidth - (ray * 2 + 1))) + 1);
+        var rndTop = setRandom(canHeight - (ray * 2 + 1));
+        var rndLeft = setRandom(canWidth - (ray * 2 + 1));
 
-        erase();
+        eraseCanvas(can);
         
         ctx.beginPath();
         ctx.arc(rndLeft + ray, rndTop + ray, ray, 0, 2*Math.PI);
@@ -85,14 +86,6 @@
       leftVal = rndLeft;
         //return [rndTop, rndLeft];
       }
-      
-      function erase() {
-        var can = document.getElementById("monCanvas");
-        var ctx = can.getContext("2d");
-        
-        ctx.clearRect(0, 0, can.width += 0, can.height += 0);
-      }
-   
   
   </script>
 </head>

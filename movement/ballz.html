@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    
+    <script src="../libraries/libMarco.js"></script>
+    <script src="../libraries/bouncyBall.js"></script>
+    <script>
+      
+      //ray, top, left, xSpeed, ySpeed, r, g, b
+      var balls = [];
+      var ball = [];
+      
+      function startFunction(){
+        
+        var canWidth = Math.floor((window.innerWidth - 25) / 100) * 100;
+        var canHeight = Math.floor((window.innerHeight - 25) / 100) * 100;
+
+        var can = document.getElementById("monCanvas");
+        var ctx = can.getContext("2d");
+        
+        can.left = 25;
+        can.top = 25;
+        can.width = canWidth;
+        can.height = canHeight;      
+        
+        ctx.save();
+        
+        var ySpeed = 0;
+        var xSpeed = 0;
+        var ray = 0;
+        var positions = 0;
+        var topVal = 0;
+        var leftVal = 0;
+        
+        for (i = 0; i < 1000; i ++){
+          xSpeed = setRandom(5);
+          ySpeed = setRandom(5);
+          ray = setRandom(10);
+          
+          positions = setPosition(canHeight, canWidth, ray);
+          topVal = positions[0];
+          leftVal = positions[1];
+          
+          ball[0] = ray;
+          ball[1] = topVal;
+          ball[2] = leftVal;
+          ball[3] = xSpeed;
+          ball[4] = ySpeed;
+          
+          balls[i] = ball;  
+          changeColor(i);
+          
+          ball = [];
+        }  
+
+        var id = setInterval(move, 5);  
+      
+        function move() {
+          eraseCanvas(can);
+          for (j = 0; j < balls.length; j ++){
+            balls[j][4] = collisions(balls[j][4], canHeight, balls[j][1], balls[j][0], j);
+            balls[j][3] = collisions(balls[j][3], canWidth, balls[j][2], balls[j][0], j);
+
+            balls[j][1] = balls[j][1] + balls[j][4];
+            balls[j][2] = balls[j][2] + balls[j][3];
+
+            ctx.beginPath();
+            ctx.arc(balls[j][2] + balls[j][0], balls[j][1] + balls[j][0], balls[j][0], 0, 2*Math.PI);
+            ctx.fillStyle = "rgb(" + balls[j][5] + ", " + balls[j][6] + ", " + balls[j][7] + ")";
+            ctx.fill();
+            ctx.strokeStyle = "rgb(" + balls[j][5] + ", " + balls[j][6] + ", " + balls[j][7] + ")";
+            ctx.stroke();
+          }
+          
+        }
+      
+      }
+      
+      function collisions(speed, limit, currentPos, ray, i) {
+        if ((currentPos + speed) > limit - (2 * ray)) {
+          speed = newDirection(speed);
+          changeColor(i);
+        }
+        else if ((currentPos + speed) < 0) {
+          speed = newDirection(speed);
+          changeColor(i);
+        }
+        
+        return speed;
+      }
+      
+      function setPosition(canHeight, canWidth, ray) {
+        
+        var can = document.getElementById("monCanvas");
+        var ctx = can.getContext("2d");
+        
+        var rndTop = setRandom(canHeight - (ray * 2 + 1));
+        var rndLeft = setRandom(canWidth - (ray * 2 + 1));
+
+        eraseCanvas(can);
+        
+        ctx.beginPath();
+        ctx.arc(rndLeft + ray, rndTop + ray, ray, 0, 2*Math.PI);
+        ctx.fillStyle = "rgb(" + ball[5] + ", " + ball[6] + ", " + ball[7] + ")";
+        ctx.fill();
+        ctx.strokeStyle = "rgb(" + ball[5] + ", " + ball[6] + ", " + ball[7] +")";
+        ctx.stroke();
+        
+        return [rndTop, rndLeft];
+      }
+      
+      function newDirection(speed){
+        
+        if (speed > 0){
+          newSpeed = setRandom(5) * -1;
+        }
+        else {
+          newSpeed = setRandom(5);
+        }
+        
+        return newSpeed;
+      }
+      
+      function changeColor(i) {
+        balls[i][5] = randomColor();
+        balls[i][6] = randomColor();
+        balls[i][7] = randomColor();
+      }
+            
+    </script>
+    
+  </head>
+  
+  <body onload="startFunction()">
+
+    <canvas id="monCanvas" width="1" height="1" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.</canvas>
+    
+  </body>
+  
+</html>
