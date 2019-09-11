@@ -1,0 +1,4563 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "a representation of a set of businesses, one record per line, with no two records representing the same business, where each line is an object that is any of the following types",
+  "anyOf": [
+    {"$ref": "#/definitions/pointOfInterest_AU"},
+    {"$ref": "#/definitions/pointOfInterest_BE"},
+    {"$ref": "#/definitions/pointOfInterest_BR"},
+    {"$ref": "#/definitions/pointOfInterest_CA"},
+    {"$ref": "#/definitions/pointOfInterest_CH"},
+    {"$ref": "#/definitions/pointOfInterest_CN"},
+    {"$ref": "#/definitions/pointOfInterest_DE"},
+    {"$ref": "#/definitions/pointOfInterest_DK"},
+    {"$ref": "#/definitions/pointOfInterest_ES"},
+    {"$ref": "#/definitions/pointOfInterest_FI"},
+    {"$ref": "#/definitions/pointOfInterest_FR"},
+    {"$ref": "#/definitions/pointOfInterest_GB"},
+    {"$ref": "#/definitions/pointOfInterest_HK"},
+    {"$ref": "#/definitions/pointOfInterest_IT"},
+    {"$ref": "#/definitions/pointOfInterest_JP"},
+    {"$ref": "#/definitions/pointOfInterest_KR"},
+    {"$ref": "#/definitions/pointOfInterest_MX"},
+    {"$ref": "#/definitions/pointOfInterest_NL"},
+    {"$ref": "#/definitions/pointOfInterest_NO"},
+    {"$ref": "#/definitions/pointOfInterest_RU"},
+    {"$ref": "#/definitions/pointOfInterest_SE"},
+    {"$ref": "#/definitions/pointOfInterest_TH"},
+    {"$ref": "#/definitions/pointOfInterest_TR"},
+    {"$ref": "#/definitions/pointOfInterest_TW"},
+    {"$ref": "#/definitions/pointOfInterest_US"},
+    {"$ref": "#/definitions/pointOfInterest_default"}
+  ],
+  "definitions": {
+    "pointOfInterest_AU": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_AU"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_AU"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_AU"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_BE": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_BE"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_BE"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_BE"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "phoneNumberType_BE": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_BE"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumber_BE": {
+      "type": "string",
+      "pattern": "^\\+3[23]|(?:\\s*?\\(0\\))?(?:\\s*?\\d){8,9}$"
+    },
+    "addressChoice_BE": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_BE"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_BE": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_BE"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "postalCode_BE": {
+      "type": "string",
+      "pattern": "^[1-9]{1}[0-9]{3}$"
+    },
+    "pointOfInterest_BR": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_BR"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_BR"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_BR"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_CA": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_CA"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_CA"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_CA"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_CH": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_CH"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_CH"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_CH"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_CN": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_CN"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_CN"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_CN"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_DE": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_DE"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_DE"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_DE"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_DK": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_DK"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_DK"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_DK"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_ES": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_ES"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_ES"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_ES"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_FI": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_FI"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_FI"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_FI"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_FR": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_FR"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_FR"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_FR"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_GB": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_GB"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_GB"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_GB"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_HK": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_HK"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_HK"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_HK"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_IT": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_IT"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_IT"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_IT"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_JP": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_JP"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_JP"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_JP"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_KR": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_KR"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_KR"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_KR"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_MX": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_MX"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_MX"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_MX"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_NL": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_NL"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_NL"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_NL"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_NO": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_NO"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_NO"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_NO"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_RU": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_RU"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_RU"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_RU"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "phoneNumberType_RU": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_RU"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumber_RU": {
+      "type": "string",
+      "pattern": "^((8|\\+7)-?)?\\(?\\d{3}\\)?-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}$"
+    },
+    "addressChoice_RU": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_RU"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_RU": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_RU"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "postalCode_RU": {
+      "type": "string",
+      "pattern": "^[0-9]{6}$"
+    },
+    "pointOfInterest_SE": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_SE"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_SE"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_SE"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "site_code",
+            "names",
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "site_code",
+            "names",
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_TH": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_TH"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_TH"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_TH"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_TR": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_TR"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_TR"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_TR"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_TW": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_TW"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_TW"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_TW"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_US": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_US"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_US"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_US"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "pointOfInterest_default": {
+      "description": "a representation of a business",
+      "type": "object",
+      "properties": {
+        "site_code": {
+          "description": "vendor-assigned business code, e.g. store code",
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "business_status": {
+          "$ref": "#/definitions/businessStatus_default"
+        },
+        "names": {
+          "description": "a list of proper names for the business",
+          "$ref": "#/definitions/requiredNamesType_default"
+        },
+        "alternate_names": {
+          "description": "a list of alternative names for the business",
+          "$ref": "#/definitions/namesType_default"
+        },
+        "main_address": {
+          "$ref": "#/definitions/addressChoice_default"
+        },
+        "phone_number": {
+          "$ref": "#/definitions/phoneNumberType_default"
+        },
+        "alternate_phone_numbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/phoneNumberType_default"
+          },
+          "uniqueItems": true
+        },
+        "home_page": {
+          "$ref": "#/definitions/urlType_default"
+        },
+        "photo_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "social_media_urls": {
+          "$ref": "#/definitions/urlsType_default"
+        },
+        "hours": {
+          "$ref": "#/definitions/hoursOfOperation_default"
+        },
+        "categories": {
+          "$ref": "#/definitions/categoriesType_default"
+        },
+        "display_point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "entry_points": {
+          "$ref": "#/definitions/entryPoints_default"
+        }
+      },
+      "required": [
+        "site_code",
+        "names",
+        "categories",
+        "phone_number"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "main_address"
+          ]
+        },
+        {
+          "required": [
+            "display_point"
+          ]
+        }
+      ]
+    },
+    "addressChoice_AU": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_AU"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_BR": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_BR"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_CA": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_CA"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_CH": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_CH"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_CN": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_CN"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_DE": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_DE"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_DK": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_DK"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_ES": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_ES"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_FI": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_FI"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_FR": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_FR"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_GB": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_GB"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_HK": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_HK"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_IT": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_IT"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_JP": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_JP"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_KR": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_KR"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_MX": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_MX"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_NL": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_NL"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_NO": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_NO"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_SE": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_SE"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_TH": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_TH"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_TR": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_TR"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_TW": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_TW"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_US": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_US"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "addressChoice_default": {
+      "description": "an address as a single string, or a structured address",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "full_address": {
+              "description": "a complete address",
+              "$ref": "#/definitions/nonEmptyString_default"
+            }
+          },
+          "required": [
+            "full_address"
+          ]
+        },
+        {
+          "properties": {
+            "structured_address": {
+              "$ref": "#/definitions/structuredAddress_default"
+            }
+          },
+          "required": [
+            "structured_address"
+          ]
+        }
+      ]
+    },
+    "businessStatus_default": {
+      "description": "the current status of a business. If status is Duplicate, correct_site_code must specify the site_code of the business of which this record is a duplicate. If status is Temporarily Closed, reopen_date should specify the date upon which the business will reopen; eventually an entry with status Open should be supplied to indicate the reopening.",
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/statusType_default"
+        },
+        "correct_site_code": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "reopen_date": {
+          "$ref": "#/definitions/dateType_default"
+        }
+      }
+    },
+    "categoriesType_default": {
+      "description": "a list of well-known categorizations for the business",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/nonEmptyString_default"
+      },
+      "uniqueItems": true
+    },
+    "countryCode_default": {
+      "description": "two or three alphabetical characters, or three digits",
+      "type": "string",
+      "pattern": "^[A-Z]{2,3}|\\d{3}$"
+    },
+    "dateType_default": {
+      "description": "a date in YYYY-MM-DD format",
+      "type": "string",
+      "pattern": "^\\d{4}[-/.](1[0-2]|0?[1-9])[-/.](3[0-1]|[0-2]?\\d)$"
+    },
+    "entryPoint_default": {
+      "description": "an entry point for a business, with a specified type of navigation for entry",
+      "type": "object",
+      "properties": {
+        "point": {
+          "$ref": "#/definitions/geographicPoint_default"
+        },
+        "navigation": {
+          "$ref": "#/definitions/navigationType_default"
+        }
+      },
+      "required": [
+        "point"
+      ]
+    },
+    "entryPoints_default": {
+      "description": "one or more entry points for a business",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/entryPoint_default"
+      },
+      "uniqueItems": true
+    },
+    "geographicCoordinates_default": {
+      "description": "latitude and longitude",
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "$ref": "#/definitions/latitude_default"
+        },
+        "longitude": {
+          "$ref": "#/definitions/longitude_default"
+        }
+      },
+      "required": [
+        "latitude",
+        "longitude"
+      ]
+    },
+    "geographicPoint_default": {
+      "description": "coordinates and origin of a point",
+      "type": "object",
+      "properties": {
+        "coordinates": {
+          "$ref": "#/definitions/geographicCoordinates_default"
+        },
+        "source": {
+          "$ref": "#/definitions/geographicPointType_default"
+        }
+      },
+      "required": [
+        "coordinates",
+        "source"
+      ]
+    },
+    "geographicPointType_default": {
+      "description": "origin of a point",
+      "type": "string",
+      "enum": [
+        "Manually Placed",
+        "Calculated"
+      ],
+      "default": "Calculated"
+    },
+    "latitude_default": {
+      "description": "-90.0000000 to 90.0000000",
+      "type": "string",
+      "pattern": "^\\-?(90([.,]0*)?|([1-8]\\d|\\d)([.,]\\d*)?)$"
+    },
+    "longitude_default": {
+      "description": "-180.0000000 to 180.0000000",
+      "type": "string",
+      "pattern": "^\\-?(180([.,]0*)?|(1[0-7]|\\d)?\\d([.,]\\d*)?)$"
+    },
+    "name_default": {
+      "description": "a name paired with a locale",
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "locale": {
+          "type": "string",
+          "pattern": "^[a-z]{2}-[A-Z]{2}$"
+        }
+      },
+      "required": [
+        "name",
+        "locale"
+      ]
+    },
+    "namesType_default": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/name_default"
+      }
+    },
+    "navigationType_default": {
+      "description": "manner of routing",
+      "type": "string",
+      "enum": [
+        "Driving",
+        "Walking"
+      ],
+      "default": "Driving"
+    },
+    "nonEmptyString_default": {
+      "type": "string",
+      "pattern": "^.+$"
+    },
+    "phoneNumber_AU": {
+      "type": "string",
+      "pattern": "^(\\(?((\\+|00)61)?\\)?(\\s|-)?(((13)([\\s\\-]?[0-9]{4}|[\\s\\-]?[0-9]{2}[\\s\\-]?[0-9]{2}|[\\s]?[a-zA-Z]{4,}))|((1300|1800|190[0-9])([\\s\\-]?[0-9]{3}[\\s\\-]?[0-9]{3}|[\\s]?[a-zA-Z]{3}[\\s]?[a-zA-Z]{3,}))|(190)\\d{1}|(000|106|112))|(\\(?((0|(\\+|00)61)[\\s\\-]?(2|4|3|7|8))?\\)?(\\s|-)?[0-9]{2}(\\s|-)?[0-9]{2}(\\s|-)?[0-9]{2}(\\s|-)?[0-9]{2}))$"
+    },
+    "phoneNumber_BR": {
+      "type": "string",
+      "pattern": "^((\\+|00)55|(0|\\s|\\(0|))(\\s|-|)(([0-9]){2}|[389]00)(\\s|-|\\.|)((([0-9]{3,5})(\\s|-|\\.|)[0-9]{4}))$"
+    },
+    "phoneNumber_CA": {
+      "type": "string",
+      "pattern": "^(((((\\+1)|(1)|(001))(\\s|-|\\.)?\\d{3})|(\\(?\\d{3}\\)?))(\\s|-|\\.)?\\d{3}(\\s|-|\\.)?\\d{4}(\\s?([Ee][Xx][Tt]([Ee][Nn][Ss][Ii][Oo][Nn])?|[Xx]).?\\s?\\d{1,5})?)$|^(\\+1)?((310))(\\s|-|\\.)?\\d{2}(\\s|-|\\.)?\\d{2}$"
+    },
+    "phoneNumber_CH": {
+      "type": "string",
+      "pattern": "^(((\\+|00)41)|0|\\(0)(-|\\s|)((([2-9][0-9](\\)|)(-|\\s|)([0-9]{3}(-|\\s|)[0-9]{2}(-|\\s|)[0-9]{2}|[0-9]{2}(-|\\s|)[0-9]{3}(-|\\s|)[0-9]{2}|[0-9]{2}(-|\\s|)[0-9]{2}(-|\\s|)[0-9]{3})))|[89][0-9]{2}(\\)|)(-|\\s|)([0-9]{2}(-|\\s|)[0-9]{2}(-|\\s|)[0-9]{2}|[0-9]{3}(-|\\s|)[0-9]{3}))$"
+    },
+    "phoneNumber_CN": {
+      "type": "string",
+      "pattern": "^(((\\+|00)86|)(\\s|-|)((0|\\(0|)[1-9][0-9](\\)|)(\\s|-|)[0-9]{2}(\\s|-|)[0-9]{2}(\\s|-|)[0-9]{2}(\\s|-|)[0-9]{2}|(0|\\(0|)[1-9][0-9]{2}(\\)|)(\\s|-|)[0-9]{1,}(\\s|-|)[0-9]{2}(\\s|-|)[0-9]{2}(\\s|-|)[0-9]{2}|(0|\\(0|)1[0-9]{2}(\\)|)(\\s|-|)[0-9]{2}(\\s|-|)[0-9]{2}(\\s|-|)[0-9]{2}(\\s|-|)[0-9]{2}(\\s|-|)|(0|\\(0|)[48][0]{2}(\\s|-|)(([0-9]{2})(\\s|-|)){2,4}))$|^(((\\+|00)852|)(\\s|-|)((0|\\(0|)[2-35-9](\\s|-|)\\d(\\s|-|)\\d{2}(\\s|-|)\\d{2}(\\s|-|)\\d{2}$))"
+    },
+    "phoneNumber_DE": {
+      "type": "string",
+      "pattern": "^(((00|\\+)49)?\\/?((\\s|-|)\\/?)(((\\(|)0)|\\(0\\))?)((\\s|-|)\\/?)((3[0-9]{1,4})|[124-9][0-9]{1,3})(\\)|)((\\s|-|)\\/?)[0-9]{1,2}((((\\s|-|)\\/?)[0-9]){3,7})$"
+    },
+    "phoneNumber_DK": {
+      "type": "string",
+      "pattern": "^((((\\+|00)45|)( |))[0-9]{8})$"
+    },
+    "phoneNumber_ES": {
+      "type": "string",
+      "pattern": "^((((\\(|)(\\+|00)(34)(\\)|))|)(\\s|\\-|)[6789][0-9](\\s|\\-|)[0-9])(\\s|\\-|)([0-9]{3}(\\s|\\-|)[0-9]{3}|[0-9]{2}(\\s|\\-|)[0-9]{2}(\\s|\\-|)[0-9]{2})$"
+    },
+    "phoneNumber_FI": {
+      "type": "string",
+      "pattern": "^((((\\+|00)358|)( |)|0)(1[03-9]|[23]|[56]|[89]|[6-8]00|457|4[0-9])[0-9]{4,9})$"
+    },
+    "phoneNumber_FR": {
+      "type": "string",
+      "pattern": "^((((\\+|00)(-|\\s|)33)(-|\\s|)(\\(0\\))?(-|\\s|)|0)[1-9](-|\\s|)(([0-9]{2}(-|\\s|)))((([0-9]{2}(-|\\s|)){3})|(([0-9]{3}(-|\\s|)){2})))$"
+    },
+    "phoneNumber_GB": {
+      "type": "string",
+      "pattern": "^(\\+44\\s?|0)(((1(\\d{1}1|1\\d{1})|((3|8|9)\\d{2}))\\s?\\d{3}\\s?\\d{4})|((2\\d|55|56|70|76)\\s?\\d{4}\\s?\\d{4})|((500|1\\d{3}|7\\d{3}|800|7624)\\s?\\d{6})|(1(\\d{3}|\\d{4})\\s?\\d{5})|845\\s?46\\s?4\\d|((800|16977)\\s?\\d{4}))$"
+    },
+    "phoneNumber_HK": {
+      "type": "string",
+      "pattern": "^(((\\+|00)852|)(\\s|-|)((0|\\(0|)[2-35-9](\\s|-|)\\d(\\s|-|)\\d{2}(\\s|-|)\\d{2}(\\s|-|)\\d{2}$))$"
+    },
+    "phoneNumber_IT": {
+      "type": "string",
+      "pattern": "^(((00|\\+)39(\\s|-|)(0|))|(\\(0|0))(\\s|-|)([26](\\)|)|([1-9][0-9](\\)|))|[1-9][0-9]{2}(\\)|))(\\s|-|)(([0-9]((\\s|-|)?)){6,8})$"
+    },
+    "phoneNumber_JP": {
+      "type": "string",
+      "pattern": "^((\\+|00)81|(0|\\(0|))(\\s|-|)(0|\\(0|\\(|)((([1-9]|50)(\\)|)(\\s|-|)\\d{4}(\\s|-|)\\d{4}|(((([1-9][0-9])|800)(\\)|)(\\s|-|)\\d{3}(\\s|-|)\\d{4}))|([1-9][0-9]{2}(\\)|)(\\s|-|)(\\d{2}(\\s|-|)\\d{4}|\\d{3}(\\s|-|)\\d{3}))|([1-9][0-9]{3}((\\)|)(\\s|-|)((\\d(\\s|-|)\\d{4})|\\d{2}(\\s|-|)\\d{3})))|((([1-9][0-9]{4}(\\)|)(\\s|-|)\\d{4}|([1-9][0-9]{2}(\\)|)(\\s|-|)[0-9]{2}(\\s|-|)\\d{4}))))))$"
+    },
+    "phoneNumber_KR": {
+      "type": "string",
+      "pattern": "^((\\+|00)82|(\\(0|0))(\\s|-|)([1-8]\\d?)(\\s|-|)\\d{3,4}(\\s|-|)\\d{3,4}$"
+    },
+    "phoneNumber_MX": {
+      "type": "string",
+      "pattern": "^((\\+52|0052|52)(\\s|-|)(1|)|(01|\\s|\\(01|))(\\s|-|)(([0-9]){2,3})(\\s|-|\\.|)((([0-9]{2})(\\s|-|\\.|)[0-9]{2}(\\s|-|\\.|)[0-9]{3,4})|\\d{3}(\\s|-|\\.|)\\d{4})$"
+    },
+    "phoneNumber_NL": {
+      "type": "string",
+      "pattern": "^((((\\+|00)31|)(\\s|)|0|\\(0)(([1-57][0-9](\\)|)(\\s||-)([0-9]{7}|[0-9]{3}(\\s|)[0-9]{2}(\\s|)[0-9]{2})|[1-57][0-9]{2}(\\)|)(\\s||-)([0-9]{6}|[0-9]{2}(\\s|)[0-9]{2}(\\s|)[0-9]{2}|[0-9]{3}(\\s|)[0-9]{3})|([89]00(\\)|)(\\s||-)([0-9]{4,9})))))$"
+    },
+    "phoneNumber_NO": {
+      "type": "string",
+      "pattern": "^((\\+|00)47|(0|))(\\s|\\-|)([235-7]\\d(\\s|\\-|)(((\\d{2}(\\s|\\-|)){3})|((\\d{3}(\\s|\\-|)){2}))|[4589]\\d{2}(\\s|\\-|)(\\d{2}(\\s|\\-|)\\d{3}|\\d{3}(\\s|\\-|)\\d{2}))$"
+    },
+    "phoneNumber_SE": {
+      "type": "string",
+      "pattern": "^((((\\+|00)46|)( |)|0)([1-9][0-9]{1,2})[0-9]{5,9})$"
+    },
+    "phoneNumber_TH": {
+      "type": "string",
+      "pattern": "^(((\\+|00)66|(0|\\(0))(-|\\s|)(((2)|[689]\\d)((\\s|-)?)\\d{3}((\\s|-)?)\\d{2}((\\s|-)?)\\d{2}|([3-57][0-9]|1[89]00)((\\s|-)?)\\d{2}((\\s|-)?)\\d{2}((\\s|-)?)\\d{2}))$"
+    },
+    "phoneNumber_TR": {
+      "type": "string",
+      "pattern": "^((\\+|00)(90)|(\\(0|0))(\\s|)[2-58-9][0-9]{2}(\\)|)(\\s|)[0-9]{3}(\\s|)[0-9]{2}(\\s|)[0-9]{2}|([4][4][4])(\\s|)[0-9]{2}(\\s|)[0-9]{2}$"
+    },
+    "phoneNumber_TW": {
+      "type": "string",
+      "pattern": "^(((\\+|00)886|(\\(?0)))((\\s|-)?)([8][0-9]{2}(\\)?)((\\s|-)?)((\\d{3})((\\s|-)?)(\\d{2})|(\\d{2})((\\s|-)?)(\\d{3})|((\\d((\\s|-)?)){6}))|([249](\\)?)((\\s|-)?)(\\d{2}((\\s|-)?)){4})|([35-7](\\)?)((\\s|-)?)\\d((\\s|-)?)(\\d{2}((\\s|-)?)){3}))$"
+    },
+    "phoneNumber_US": {
+      "type": "string",
+      "pattern": "^(((((\\+1)|(1)|(001))(\\s|-|\\.)?\\d{3})|(\\(?\\d{3}\\)?))(\\s|-|\\.)?\\d{3}(\\s|-|\\.)?\\d{4}(\\s?([Ee][Xx][Tt]([Ee][Nn][Ss][Ii][Oo][Nn])?|[Xx]).?\\s?\\d{1,5})?)$"
+    },
+    "phoneNumber_default": {
+      "description": "ten to fifteen digits, with optional formatting characters and spaces",
+      "type": "string",
+      "pattern": "^( *[-+.,(]?(\\d|[A-Z])\\)?){10,15}$"
+    },
+    "phoneNumberType_AU": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_AU"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_BR": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_BR"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_CA": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_CA"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_CH": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_CH"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_CN": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_CN"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_DE": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_DE"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_DK": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_DK"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_ES": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_ES"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_FI": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_FI"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_FR": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_FR"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_GB": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_GB"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_HK": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_HK"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_IT": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_IT"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_JP": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_JP"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_KR": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_KR"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_MX": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_MX"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_NL": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_NL"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_NO": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_NO"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_SE": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_SE"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_TH": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_TH"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_TR": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_TR"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_TW": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_TW"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_US": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_US"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneNumberType_default": {
+      "description": "a phone number with an optional type specification",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/definitions/phoneNumber_default"
+        },
+        "type": {
+          "$ref": "#/definitions/phoneType_default"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "phoneType_default": {
+      "description": "type of phone number",
+      "type": "string",
+      "enum": [
+        "Fax",
+        "Landline",
+        "Mobile",
+        "Toll-free"
+      ],
+      "default": "Landline"
+    },
+    "postalCode_AU": {
+      "type": "string",
+      "pattern": "^((0[289][0-9]{2})|([1-9][0-9]{3}))$"
+    },
+    "postalCode_BR": {
+      "type": "string",
+      "pattern": "^[0-9]{5}(\\-|\\s|)[0-9]{3}$"
+    },
+    "postalCode_CA": {
+      "type": "string",
+      "pattern": "^([ABCEGHJKLMNPRSTVXY]\\d[A-Z]\\s?\\d[A-Z]\\d)$"
+    },
+    "postalCode_CH": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]{3}$"
+    },
+    "postalCode_CN": {
+      "type": "string",
+      "pattern": "^([0-9]{3}(\\s|-|)[0-9]{3})$"
+    },
+    "postalCode_DE": {
+      "type": "string",
+      "pattern": "^[0-9]{2}[0-9]{3}$"
+    },
+    "postalCode_DK": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]{3}$"
+    },
+    "postalCode_ES": {
+      "type": "string",
+      "pattern": "^([0-5][0-9]{4})$"
+    },
+    "postalCode_FI": {
+      "type": "string",
+      "pattern": "^[0-9]{5}$"
+    },
+    "postalCode_FR": {
+      "type": "string",
+      "pattern": "^[0-9]{5}$"
+    },
+    "postalCode_GB": {
+      "type": "string",
+      "pattern": "(((^[BEGLMNS][1-9]\\w?)|(^W[2-9])|(^(A[BL]|B[ABDHLNRST]|C[ABFHMORTVW]|D[ADEGHLNTY]|E[HNX]|F[KY]|G[LUY]|H[ADGPRSUX]|I[GMPV]|JE|K[ATWY]|L[ADELNSU]|M[EKL]|N[EGNPRW]|O[LX]|P[AEHLOR]|R[GHM]|S[AEGKL-PRSTWY]|T[ADFNQRSW]|UB|W[ADFNRSV]|YO|ZE)(\\d\\d?))|(^W1[A-HJKSTUW0-9])|(((^WC[1-2])|(^EC[1-4])|(^SW1))[ABEHMNPRVWXY]))(\\s*)?([0-9][ABD-HJLNP-UW-Z]{2}))$|(^GIR\\s?0AA$)(((^[BEGLMNS][1-9]\\d?)|(^W[2-9])|(^(A[BL]|B[ABDHLNRST]|C[ABFHMORTVW]|D[ADEGHLNTY]|E[HNX]|F[KY]|G[LUY]|H[ADGPRSUX]|I[GMPV]|JE|K[ATWY]|L[ADELNSU]|M[EKL]|N[EGNPRW]|O[LX]|P[AEHLOR]|R[GHM]|S[AEGKL-PRSTWY]|T[ADFNQRSW]|UB|W[ADFNRSV]|YO|ZE)(\\d\\d?))|(^W1[A-HJKSTUW0-9])|(((^WC[1-2])|(^EC[1-4])|(^SW1))[ABEHMNPRVWXY]))(\\s*)?([0-9][ABD-HJLNP-UW-Z]{2}))$|(^GIR\\s?0AA$)"
+    },
+    "postalCode_HK": {
+      "type": "string",
+      "pattern": "^(999077)|$"
+    },
+    "postalCode_IT": {
+      "type": "string",
+      "pattern": "^[0-9]{2}[0-9]{3}$"
+    },
+    "postalCode_JP": {
+      "type": "string",
+      "pattern": "^((〒\\s?)?)(\\d{3}(\\s|-|)\\d{4})$"
+    },
+    "postalCode_KR": {
+      "type": "string",
+      "pattern": "^([0-9]{3}(\\-|\\s|)[0-9]{3})$"
+    },
+    "postalCode_MX": {
+      "type": "string",
+      "pattern": "^[0-9]{2}(\\s|)[0-9]{3}$"
+    },
+    "postalCode_NL": {
+      "type": "string",
+      "pattern": "^[0-9]{4}(\\s|\\s\\s|)([A-Za-z]{2})$"
+    },
+    "postalCode_NO": {
+      "type": "string",
+      "pattern": "^[0-9]{4}$"
+    },
+    "postalCode_SE": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]{4}$"
+    },
+    "postalCode_TH": {
+      "type": "string",
+      "pattern": "^([1-9]\\d{4})$"
+    },
+    "postalCode_TR": {
+      "type": "string",
+      "pattern": "^[0-9]{5}$"
+    },
+    "postalCode_TW": {
+      "type": "string",
+      "pattern": "^(\\d{3}((\\s|\\-|)(\\d{2})?))$"
+    },
+    "postalCode_US": {
+      "type": "string",
+      "pattern": "^((00[5-9]\\d{2}|0[1-9]\\d{3}|[1-9]\\d{4})(-\\d{4})?)$"
+    },
+    "postalCode_default": {
+      "description": "five or nine digits",
+      "type": "string",
+      "pattern": "^\\d{5}(-\\d{4})?$"
+    },
+    "requiredNamesType_default": {
+      "$ref": "#/definitions/namesType_default",
+      "minItems": 1
+    },
+    "structuredAddress_AU": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_AU"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_BR": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_BR"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_CA": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_CA"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_CH": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_CH"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_CN": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_CN"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_DE": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_DE"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_DK": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_DK"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_ES": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_ES"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_FI": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_FI"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_FR": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_FR"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_GB": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_GB"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_HK": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_HK"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_IT": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_IT"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_JP": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_JP"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_KR": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_KR"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_MX": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_MX"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_NL": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_NL"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_NO": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_NO"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_SE": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_SE"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_TH": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_TH"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_TR": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_TR"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_TW": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_TW"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_US": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_US"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "structuredAddress_default": {
+      "description": "an address with explicitly described pieces",
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonEmptyString_default"
+          },
+          "minItems": 1
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "locality": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "state_province": {
+          "$ref": "#/definitions/nonEmptyString_default"
+        },
+        "postal_code": {
+          "$ref": "#/definitions/postalCode_default"
+        },
+        "country_code": {
+          "$ref": "#/definitions/countryCode_default"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "street_address",
+            "locality",
+            "state_province",
+            "country_code"
+          ]
+        },
+        {
+          "required": [
+            "postal_code",
+            "country_code"
+          ]
+        }
+      ]
+    },
+    "statusType_default": {
+      "description": "the status of this business. Moved indicates that the business' current values describe a business that has moved while retaining the same site_code. Other indicates that the business record is being removed for some other reason. Additional status types are described in businessStatus_default.",
+      "type": "string",
+      "enum": [
+        "Open",
+        "Closed",
+        "Temporarily Closed",
+        "Duplicate",
+        "Moved",
+        "Other"
+      ],
+      "default": "Open"
+    },
+    "urlType_default": {
+      "type": "string",
+      "format": "uri"
+    },
+    "urlsType_default": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/urlType_default"
+      },
+      "uniqueItems": true
+    },
+    "hoursOfOperation_default": {
+      "description": "hours of operation for a normal week, format follows http://wiki.openstreetmap.org/wiki/Key:opening_hours",
+      "type": "string",
+      "pattern": "^(?:(?:(?:(?:24 *[/] *7|(?:(?:(?:(?:(?:[Ss][Uu](?:[Nn](?:[Dd][Aa][Yy])?)?|[Mm][Oo](?:[Nn](?:[Dd][Aa][Yy])?)?|[Tt][Uu](?:[Ee](?:[Ss](?:[Dd][Aa][Yy])?)?)?|[Ww][Ee](?:[Dd](?:[Nn][Ee][Ss][Dd][Aa][Yy])?)?|[Tt][Hh](?:[Uu](?:[Rr](?:[Ss](?:[Dd][Aa][Yy])?)?)?)?|[Ff][Rr](?:[Ii](?:[Dd][Aa][Yy])?)?|[Ss][Aa](?:[Tt](?:[Uu][Rr][Dd][Aa][Yy])?)?)(?: *- *(?:[Ss][Uu](?:[Nn](?:[Dd][Aa][Yy])?)?|[Mm][Oo](?:[Nn](?:[Dd][Aa][Yy])?)?|[Tt][Uu](?:[Ee](?:[Ss](?:[Dd][Aa][Yy])?)?)?|[Ww][Ee](?:[Dd](?:[Nn][Ee][Ss][Dd][Aa][Yy])?)?|[Tt][Hh](?:[Uu](?:[Rr](?:[Ss](?:[Dd][Aa][Yy])?)?)?)?|[Ff][Rr](?:[Ii](?:[Dd][Aa][Yy])?)?|[Ss][Aa](?:[Tt](?:[Uu][Rr][Dd][Aa][Yy])?)?))?))(?: *, *(?:(?:(?:[Ss][Uu](?:[Nn](?:[Dd][Aa][Yy])?)?|[Mm][Oo](?:[Nn](?:[Dd][Aa][Yy])?)?|[Tt][Uu](?:[Ee](?:[Ss](?:[Dd][Aa][Yy])?)?)?|[Ww][Ee](?:[Dd](?:[Nn][Ee][Ss][Dd][Aa][Yy])?)?|[Tt][Hh](?:[Uu](?:[Rr](?:[Ss](?:[Dd][Aa][Yy])?)?)?)?|[Ff][Rr](?:[Ii](?:[Dd][Aa][Yy])?)?|[Ss][Aa](?:[Tt](?:[Uu][Rr][Dd][Aa][Yy])?)?)(?: *- *(?:[Ss][Uu](?:[Nn](?:[Dd][Aa][Yy])?)?|[Mm][Oo](?:[Nn](?:[Dd][Aa][Yy])?)?|[Tt][Uu](?:[Ee](?:[Ss](?:[Dd][Aa][Yy])?)?)?|[Ww][Ee](?:[Dd](?:[Nn][Ee][Ss][Dd][Aa][Yy])?)?|[Tt][Hh](?:[Uu](?:[Rr](?:[Ss](?:[Dd][Aa][Yy])?)?)?)?|[Ff][Rr](?:[Ii](?:[Dd][Aa][Yy])?)?|[Ss][Aa](?:[Tt](?:[Uu][Rr][Dd][Aa][Yy])?)?))?)))*) +)?(?:(?:(?:(?:(?:[0-1]?[0-9]|2[0-4])[:.](?:[0-5][0-9])))(?: *- *(?:(?:(?:[0-3]?[0-9]|4[0-8])[:.](?:[0-5][0-9]))))?)(?: *, *(?:(?:(?:(?:[0-1]?[0-9]|2[0-4])[:.](?:[0-5][0-9])))(?: *- *(?:(?:(?:[0-3]?[0-9]|4[0-8])[:.](?:[0-5][0-9]))))?))*)|(?:(?:(?:(?:[Ss][Uu](?:[Nn](?:[Dd][Aa][Yy])?)?|[Mm][Oo](?:[Nn](?:[Dd][Aa][Yy])?)?|[Tt][Uu](?:[Ee](?:[Ss](?:[Dd][Aa][Yy])?)?)?|[Ww][Ee](?:[Dd](?:[Nn][Ee][Ss][Dd][Aa][Yy])?)?|[Tt][Hh](?:[Uu](?:[Rr](?:[Ss](?:[Dd][Aa][Yy])?)?)?)?|[Ff][Rr](?:[Ii](?:[Dd][Aa][Yy])?)?|[Ss][Aa](?:[Tt](?:[Uu][Rr][Dd][Aa][Yy])?)?)(?: *- *(?:[Ss][Uu](?:[Nn](?:[Dd][Aa][Yy])?)?|[Mm][Oo](?:[Nn](?:[Dd][Aa][Yy])?)?|[Tt][Uu](?:[Ee](?:[Ss](?:[Dd][Aa][Yy])?)?)?|[Ww][Ee](?:[Dd](?:[Nn][Ee][Ss][Dd][Aa][Yy])?)?|[Tt][Hh](?:[Uu](?:[Rr](?:[Ss](?:[Dd][Aa][Yy])?)?)?)?|[Ff][Rr](?:[Ii](?:[Dd][Aa][Yy])?)?|[Ss][Aa](?:[Tt](?:[Uu][Rr][Dd][Aa][Yy])?)?))?))(?: *, *(?:(?:(?:[Ss][Uu](?:[Nn](?:[Dd][Aa][Yy])?)?|[Mm][Oo](?:[Nn](?:[Dd][Aa][Yy])?)?|[Tt][Uu](?:[Ee](?:[Ss](?:[Dd][Aa][Yy])?)?)?|[Ww][Ee](?:[Dd](?:[Nn][Ee][Ss][Dd][Aa][Yy])?)?|[Tt][Hh](?:[Uu](?:[Rr](?:[Ss](?:[Dd][Aa][Yy])?)?)?)?|[Ff][Rr](?:[Ii](?:[Dd][Aa][Yy])?)?|[Ss][Aa](?:[Tt](?:[Uu][Rr][Dd][Aa][Yy])?)?)(?: *- *(?:[Ss][Uu](?:[Nn](?:[Dd][Aa][Yy])?)?|[Mm][Oo](?:[Nn](?:[Dd][Aa][Yy])?)?|[Tt][Uu](?:[Ee](?:[Ss](?:[Dd][Aa][Yy])?)?)?|[Ww][Ee](?:[Dd](?:[Nn][Ee][Ss][Dd][Aa][Yy])?)?|[Tt][Hh](?:[Uu](?:[Rr](?:[Ss](?:[Dd][Aa][Yy])?)?)?)?|[Ff][Rr](?:[Ii](?:[Dd][Aa][Yy])?)?|[Ss][Aa](?:[Tt](?:[Uu][Rr][Dd][Aa][Yy])?)?))?)))*)))(?: *[,;] *(?:(?:24 *[/] *7|(?:(?:(?:(?:(?:[Ss][Uu](?:[Nn](?:[Dd][Aa][Yy])?)?|[Mm][Oo](?:[Nn](?:[Dd][Aa][Yy])?)?|[Tt][Uu](?:[Ee](?:[Ss](?:[Dd][Aa][Yy])?)?)?|[Ww][Ee](?:[Dd](?:[Nn][Ee][Ss][Dd][Aa][Yy])?)?|[Tt][Hh](?:[Uu](?:[Rr](?:[Ss](?:[Dd][Aa][Yy])?)?)?)?|[Ff][Rr](?:[Ii](?:[Dd][Aa][Yy])?)?|[Ss][Aa](?:[Tt](?:[Uu][Rr][Dd][Aa][Yy])?)?)(?: *- *(?:[Ss][Uu](?:[Nn](?:[Dd][Aa][Yy])?)?|[Mm][Oo](?:[Nn](?:[Dd][Aa][Yy])?)?|[Tt][Uu](?:[Ee](?:[Ss](?:[Dd][Aa][Yy])?)?)?|[Ww][Ee](?:[Dd](?:[Nn][Ee][Ss][Dd][Aa][Yy])?)?|[Tt][Hh](?:[Uu](?:[Rr](?:[Ss](?:[Dd][Aa][Yy])?)?)?)?|[Ff][Rr](?:[Ii](?:[Dd][Aa][Yy])?)?|[Ss][Aa](?:[Tt](?:[Uu][Rr][Dd][Aa][Yy])?)?))?))(?: *, *(?:(?:(?:[Ss][Uu](?:[Nn](?:[Dd][Aa][Yy])?)?|[Mm][Oo](?:[Nn](?:[Dd][Aa][Yy])?)?|[Tt][Uu](?:[Ee](?:[Ss](?:[Dd][Aa][Yy])?)?)?|[Ww][Ee](?:[Dd](?:[Nn][Ee][Ss][Dd][Aa][Yy])?)?|[Tt][Hh](?:[Uu](?:[Rr](?:[Ss](?:[Dd][Aa][Yy])?)?)?)?|[Ff][Rr](?:[Ii](?:[Dd][Aa][Yy])?)?|[Ss][Aa](?:[Tt](?:[Uu][Rr][Dd][Aa][Yy])?)?)(?: *- *(?:[Ss][Uu](?:[Nn](?:[Dd][Aa][Yy])?)?|[Mm][Oo](?:[Nn](?:[Dd][Aa][Yy])?)?|[Tt][Uu](?:[Ee](?:[Ss](?:[Dd][Aa][Yy])?)?)?|[Ww][Ee](?:[Dd](?:[Nn][Ee][Ss][Dd][Aa][Yy])?)?|[Tt][Hh](?:[Uu](?:[Rr](?:[Ss](?:[Dd][Aa][Yy])?)?)?)?|[Ff][Rr](?:[Ii](?:[Dd][Aa][Yy])?)?|[Ss][Aa](?:[Tt](?:[Uu][Rr][Dd][Aa][Yy])?)?))?)))*) +)?(?:(?:(?:(?:(?:[0-1]?[0-9]|2[0-4])[:.](?:[0-5][0-9])))(?: *- *(?:(?:(?:[0-3]?[0-9]|4[0-8])[:.](?:[0-5][0-9]))))?)(?: *, *(?:(?:(?:(?:[0-1]?[0-9]|2[0-4])[:.](?:[0-5][0-9])))(?: *- *(?:(?:(?:[0-3]?[0-9]|4[0-8])[:.](?:[0-5][0-9]))))?))*)|(?:(?:(?:(?:[Ss][Uu](?:[Nn](?:[Dd][Aa][Yy])?)?|[Mm][Oo](?:[Nn](?:[Dd][Aa][Yy])?)?|[Tt][Uu](?:[Ee](?:[Ss](?:[Dd][Aa][Yy])?)?)?|[Ww][Ee](?:[Dd](?:[Nn][Ee][Ss][Dd][Aa][Yy])?)?|[Tt][Hh](?:[Uu](?:[Rr](?:[Ss](?:[Dd][Aa][Yy])?)?)?)?|[Ff][Rr](?:[Ii](?:[Dd][Aa][Yy])?)?|[Ss][Aa](?:[Tt](?:[Uu][Rr][Dd][Aa][Yy])?)?)(?: *- *(?:[Ss][Uu](?:[Nn](?:[Dd][Aa][Yy])?)?|[Mm][Oo](?:[Nn](?:[Dd][Aa][Yy])?)?|[Tt][Uu](?:[Ee](?:[Ss](?:[Dd][Aa][Yy])?)?)?|[Ww][Ee](?:[Dd](?:[Nn][Ee][Ss][Dd][Aa][Yy])?)?|[Tt][Hh](?:[Uu](?:[Rr](?:[Ss](?:[Dd][Aa][Yy])?)?)?)?|[Ff][Rr](?:[Ii](?:[Dd][Aa][Yy])?)?|[Ss][Aa](?:[Tt](?:[Uu][Rr][Dd][Aa][Yy])?)?))?))(?: *, *(?:(?:(?:[Ss][Uu](?:[Nn](?:[Dd][Aa][Yy])?)?|[Mm][Oo](?:[Nn](?:[Dd][Aa][Yy])?)?|[Tt][Uu](?:[Ee](?:[Ss](?:[Dd][Aa][Yy])?)?)?|[Ww][Ee](?:[Dd](?:[Nn][Ee][Ss][Dd][Aa][Yy])?)?|[Tt][Hh](?:[Uu](?:[Rr](?:[Ss](?:[Dd][Aa][Yy])?)?)?)?|[Ff][Rr](?:[Ii](?:[Dd][Aa][Yy])?)?|[Ss][Aa](?:[Tt](?:[Uu][Rr][Dd][Aa][Yy])?)?)(?: *- *(?:[Ss][Uu](?:[Nn](?:[Dd][Aa][Yy])?)?|[Mm][Oo](?:[Nn](?:[Dd][Aa][Yy])?)?|[Tt][Uu](?:[Ee](?:[Ss](?:[Dd][Aa][Yy])?)?)?|[Ww][Ee](?:[Dd](?:[Nn][Ee][Ss][Dd][Aa][Yy])?)?|[Tt][Hh](?:[Uu](?:[Rr](?:[Ss](?:[Dd][Aa][Yy])?)?)?)?|[Ff][Rr](?:[Ii](?:[Dd][Aa][Yy])?)?|[Ss][Aa](?:[Tt](?:[Uu][Rr][Dd][Aa][Yy])?)?))?)))*))))*))$"
+    }
+  }
+}
